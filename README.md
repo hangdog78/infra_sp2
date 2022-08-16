@@ -86,3 +86,70 @@ docker-compose exec web python manage.py collectstatic --no-input
 ```
 docker-compose exec web python manage.py load_csv
 ```
+
+## Примеры обращения к API
+
+### Регистрация нового пользователя
+
+POST запрос на адрес:
+```
+/api/v1/auth/signup/
+```
+Тело запроса:
+```
+{
+    "email": "string",
+    "username": "string"
+}
+```
+### Получение JWT-токена
+POST запрос на адрес:
+```
+/api/v1/auth/token/
+```
+Тело запроса:
+```
+{
+    "username": "string",
+    "confirmation_code": "string"
+}
+```
+Ответ API:
+```
+{
+    "token": "string"
+}
+```
+### Получение списка всех категорий
+GET запрос на адрес:
+```
+/api/v1/categories/
+```
+Ответ
+```
+[
+  {
+    "count": 0,
+    "next": "string",
+    "previous": "string",
+    "results": [
+      {
+        "name": "string",
+        "slug": "string"
+      }
+    ]
+  }
+]
+```
+
+### Документация по API
+
+Описание API развернуто по адресу:
+```
+/redoc/
+```
+
+## Над проектом работали
+-Роман Хижняк 
+-Федоров Артем
+-Никонов Андрей
